@@ -28,6 +28,11 @@ def help_command(message):
     ]
     bot.send_message(message.chat.id, '\n'.join(commands_list))
 
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
+
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         print("Starting bot...")
